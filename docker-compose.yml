@@ -8,6 +8,8 @@ services:
       - "8001:80"
     env_file:
       - ./services/payment-service/.env
+    volumes:
+      - ./data:/app
 
   order:
     build: ./services/order-service
