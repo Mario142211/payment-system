@@ -7,3 +7,4 @@ class Payment(Base):
     id = Column(Integer, primary_key=True, index=True)
     amount = Column(Float)
     status = Column(String)
+    stripe_id = Column(String, nullable=True)

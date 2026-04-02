@@ -17,14 +17,15 @@ class PaymentService:
     def create_payment(amount: float):
         intent = stripe.PaymentIntent.create(
             amount=int(amount * 100),
-            currency="mxn",
+            currency="usd"
         )
 
         db = SessionLocal()
 
         payment = Payment(
             amount=amount,
-            status="created"
+            status="created",
+            stripe_id=intent.id   # 🔥 CLAVE
         )
 
         db.add(payment)
