@@ -9,8 +9,7 @@ services:
     env_file:
       - ./services/payment-service/.env
     volumes:
-      - ./data:/app
-
+      - ./data:/app/data
   order:
     build: ./services/order-service
     container_name: order-service
