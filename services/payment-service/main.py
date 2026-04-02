@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.controllers.payment_controller import router as payment_router
 from app.controllers.webhook_controller import router as webhook_router
 from app.db.database import engine, Base
+from app.models import payment
 
 app = FastAPI()
 
