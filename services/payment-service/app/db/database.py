@@ -10,3 +10,4 @@ SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
 
 import app.models.payment
+import app.models.user
