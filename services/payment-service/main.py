@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 # 🔥 IMPORTAR MODELOS PRIMERO (CLAVE)
 from app.models.payment import Payment
@@ -10,7 +11,20 @@ from app.controllers.auth_controller import router as auth_router
 from app.db.database import engine, Base
 
 app = FastAPI()
+origins = [
+    "http://localhost:3000",   # frontend local
+    "http://127.0.0.1:3000",
+    "http://52.14.111.202",   # opcional
+]
 
+app.add_middleware(
+    CORSMiddleware,
+    #allow_origins=origins,   # o ["*"] para pruebas
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(payment_router, prefix="/payments")
 app.include_router(webhook_router)
 app.include_router(auth_router,prefix="/auth")
